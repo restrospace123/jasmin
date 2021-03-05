@@ -1,0 +1,80 @@
+<div fxLayout="row">
+    <div fxFlex="14">
+      <app-sidebar></app-sidebar>
+    </div>
+  
+    <div fxFlex="80">
+  
+      <!-- Title group  -->
+    <mat-card style="margin: 15px;">
+    <div class="title-group">
+      <h1 class="mat-h1"><mat-icon>person_add</mat-icon> Edit Student</h1>
+    </div>
+    </mat-card>
+    
+    <mat-card style="margin: 15px;">
+    
+    <div class="container">
+        <form fxLayoutAlign="Stretch" method="post" [formGroup]="formGroup" (ngSubmit)="onSubmit(StudentData.id)">
+            <div class="mat-elevation-z8" style="margin: 10px;">
+                
+                <mat-form-field appearance="fill">
+                    <mat-label>Name</mat-label>
+                    <input matInput placeholder="Eneter Name" formControlName="student_name" id="student_name" [(ngModel)]="StudentData.student_name" value="{{StudentData.student_name}}">
+                    <mat-error *ngIf="hasError('student_name', 'required')">Name is required</mat-error>
+                </mat-form-field>
+                
+                <mat-form-field appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input matInput pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" placeholder="Eneter Email" formControlName="student_email" id="student_email" [(ngModel)]="StudentData.student_email" value="{{StudentData.student_email}}">
+                    <mat-error *ngIf="hasError('student_email', 'required')">Email is required</mat-error>
+                </mat-form-field>
+                
+                <mat-form-field appearance="fill">
+                    <mat-label>Mobile</mat-label>
+                    <input matInput placeholder="Eneter Mobile" formControlName="student_mobile" id="student_mobile" [(ngModel)]="StudentData.student_mobile" value="{{StudentData.student_mobile}}">
+                    <mat-error *ngIf="hasError('student_mobile', 'required')">Mobile is required</mat-error>
+                </mat-form-field>
+                
+                <mat-form-field appearance="fill">
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput [matDatepicker]="picker" placeholder="Select DOB" formControlName="student_dob" id="student_dob" [(ngModel)]="StudentData.dob">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error *ngIf="hasError('student_dob', 'required')">DOB is required</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill">
+                    <mat-label>Gender</mat-label>
+                    <mat-select matInput formControlName="student_gender" id="student_gender" [(ngModel)]="StudentData.gender">
+                    <mat-option value="Male">Male</mat-option>
+                    <mat-option value="Female">Female</mat-option>
+                    <mat-option value="Other">Other</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="hasError('student_gender', 'required')">DOB is required</mat-error>
+                </mat-form-field>
+                
+                <mat-form-field appearance="fill">
+                    <mat-label>Address</mat-label>
+                    <textarea matInput placeholder="Enter Address" matTextareaAutosize matAutosizeMinRows=1 matAutosizeMaxRows=5 formControlName="student_address" id="student_address" [(ngModel)]="StudentData.student_address">{{StudentData.student_address}}</textarea>
+                    <mat-error *ngIf="hasError('student_address', 'required')">Address is required</mat-error>
+                </mat-form-field>
+                <br>
+                <div fxLayoutAlign="end">
+                    <button mat-raised-button type="submit" color="primary" style="margin: 10px;">Update</button>
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+  </mat-card>
+  
+    </div>
+  </div>
+  
+  
+  
+  <!-- <mat-divider fxFlex="1 0"></mat-divider> -->
+    
+  
